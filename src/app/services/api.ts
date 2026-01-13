@@ -28,10 +28,10 @@ export class ApiService {
   private http = inject(HttpClient);
   
   // 👇 MANTENGO LA URL LOCAL ACTIVADA PARA QUE SIGAS PROBANDO
-  private apiUrl = 'http://localhost:3000'; 
+  // private apiUrl = 'http://localhost:3000'; 
   
   // ⚠️ ACORDATE: Cuando termines de probar, comentá la de arriba y descomentá esta:
-  // private apiUrl = environment.apiUrl; 
+  private apiUrl = environment.apiUrl; 
 
   createCliente(cliente: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/clientes`, cliente);
