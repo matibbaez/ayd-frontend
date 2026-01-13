@@ -1,0 +1,41 @@
+<div style="max-width: 800px; margin: 40px auto; font-family: sans-serif;">
+  
+  <h1>⚖️ Gestión de Expedientes</h1>
+
+  <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <h2>📄 Causas Activas</h2>
+
+    <p *ngIf="causas.length === 0" style="color: #666;">
+      ⏳ Cargando expedientes o no hay datos...
+    </p>
+
+    <table *ngIf="causas.length > 0" style="width: 100%; text-align: left; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ddd;">
+          <th style="padding: 10px;">Carátula</th>
+          <th style="padding: 10px;">Cliente</th>
+          <th style="padding: 10px;">Juzgado</th>
+          <th style="padding: 10px;">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let causa of causas" style="border-bottom: 1px solid #eee;">
+          <td style="padding: 10px; font-weight: bold;">{{ causa.caratula }}</td>
+          
+          <td style="padding: 10px; color: #007bff;">
+            👤 {{ causa.cliente?.nombre_completo || 'Sin Cliente' }}
+          </td>
+          
+          <td style="padding: 10px;">{{ causa.juzgado }}</td>
+          
+          <td style="padding: 10px;">
+            <span style="background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">
+              {{ causa.estado }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
