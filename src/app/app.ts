@@ -39,7 +39,16 @@ export class AppComponent implements OnInit {
   }
 
   cargarDatos() {
-    // Pedimos las causas al Backend
+    // 1. Pedimos los CLIENTES (¡Esto faltaba!)
+    this.apiService.getClientes().subscribe({
+      next: (data) => {
+        console.log('Clientes recibidos:', data);
+        this.clientes = data;
+      },
+      error: (e) => console.error('Error al traer clientes:', e)
+    });
+
+    // 2. Pedimos las CAUSAS (Esto ya lo tenías)
     this.apiService.getCausas().subscribe({
       next: (data) => {
         console.log('Causas recibidas:', data);
